@@ -13,7 +13,7 @@ export default function Id() {
   const [data, setData] = useState();
   const [allData, setAllData] = useState();
   const { slug } = router.query;
-  let url = process.env.url || "http://localhost:5500";
+  let url = process.env.url || "https://newsfeed-new.herokuapp.com/api";
   useEffect(() => {
     const getData = async () => {
       const res = await axios.get(`${url}/news/${router.query.slug}`);

@@ -30,7 +30,8 @@ function Home() {
   useEffect(() => {
     getData();
   }, [done]);
-  let url = process.env.url || "http://localhost:5500";
+  let url = process.env.url || "https://newsfeed-new.herokuapp.com/api";
+  console.log(url);
   const getData = async () => {
     const res = await axios.get(`${url}/news`);
     console.log(url);
