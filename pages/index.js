@@ -33,6 +33,7 @@ function Home() {
   let url = process.env.url || "http://localhost:5500";
   const getData = async () => {
     const res = await axios.get(`${url}/news`);
+    console.log(url);
     setData(res.data);
   };
 
