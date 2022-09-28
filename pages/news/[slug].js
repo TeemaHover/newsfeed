@@ -13,15 +13,14 @@ export default function Id() {
   const [data, setData] = useState();
   const [allData, setAllData] = useState();
   const { slug } = router.query;
+  let url = process.env.url || "http://localhost:5500";
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get(
-        `http://localhost:5500/news/${router.query.slug}`
-      );
+      const res = await axios.get(`${url}/news/${router.query.slug}`);
       setData(res.data);
     };
     const getAllData = async () => {
-      const res = await axios.get(`http://localhost:5500/news/`);
+      const res = await axios.get(`${url}/news/`);
       setAllData(res.data);
     };
     if (slug) {
