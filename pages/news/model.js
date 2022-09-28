@@ -45,37 +45,9 @@ function Home() {
     });
     setDone(!done);
     console.log(res);
-    // setdata1((d) => ({ ...d, name: res.data.name, add: res.data.add }));
-    // setForm((d) => ({ ...d, name: "", num1: 0, num2: 0 }));
   };
   return (
     <VStack>
-      {/* {data && (
-        <>
-          {" "}
-          <Heading>{data.text}</Heading>
-          <Heading>{data.title}</Heading>
-        </>
-      )} */}
-
-      {/* <FormControl>
-        <FormLabel>Amount</FormLabel>
-        <Input
-          value={form.title}
-          onChange={(e) => setForm((d) => ({ ...d, title: e.target.value }))}
-        />
-        <Input
-          value={form.text}
-          onChange={(e) => setForm((d) => ({ ...d, text: e.target.value }))}
-        ></Input>
-
-        <Button onClick={() => submit()}>submit</Button>
-      </FormControl>
-      {data1.name && data1.add != 0 && (
-        <Heading>
-          {data1.name}: {data1.add}
-        </Heading>
-      )} */}
       <HomeLayout />
       <NewsFeed />
       <Banner />
