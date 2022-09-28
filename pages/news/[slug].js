@@ -100,6 +100,7 @@ export default function Id() {
                     mt={10}
                     boxShadow="md"
                     p={5}
+                    key={i}
                   >
                     <Text
                       fontSize={32}
