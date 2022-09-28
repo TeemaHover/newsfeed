@@ -30,14 +30,12 @@ function Home() {
   useEffect(() => {
     getData();
   }, [done]);
+  let url = process.env.url || "http://localhost:5500";
   const getData = async () => {
-    const res = await axios.get(`http://localhost:5500/news`);
+    const res = await axios.get(`${url}/news`);
     setData(res.data);
   };
-  const handle = async (id) => {
-    const res = await axios.get(`http://localhost:5500/news`);
-    console.log(res.data);
-  };
+
   const submit = async () => {
     const res = await axios.post("http://localhost:5500/news", {
       text: form.text,
