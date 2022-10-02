@@ -13,7 +13,7 @@ export default function Id() {
   const [data, setData] = useState();
   const [allData, setAllData] = useState();
   const { slug } = router.query;
-  let url = process.env.url || "https://newsfeed-new.herokuapp.com/";
+  let url = process.env.url || "https://newsfeed-new.herokuapp.com";
   useEffect(() => {
     const getData = async () => {
       const res = await axios({
@@ -28,7 +28,7 @@ export default function Id() {
     const getAllData = async () => {
       const res = await axios({
         method: "get",
-        url: `${url}/news/`,
+        url: `${url}/news`,
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
@@ -37,7 +37,6 @@ export default function Id() {
     if (slug) {
       getData();
       getAllData();
-      console.log(getAllData());
     }
   }, [slug]);
   return (
