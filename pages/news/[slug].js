@@ -16,8 +16,13 @@ export default function Id() {
   let url = process.env.url || "https://newsfeed-new.herokuapp.com/";
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get(`${url}/news/${router.query.slug}`);
-      setData(res.data);
+      const res = await axios({
+        method: "get",
+        url: `${url}/news/${router.query.slug}`,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }).then((d) => setData(d.data));
     };
     const getAllData = async () => {
       const res = await axios.get(`${url}/news/`);

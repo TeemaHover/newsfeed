@@ -30,12 +30,18 @@ function Home() {
   useEffect(() => {
     getData();
   }, [done]);
-  let url = process.env.url || "https://newsfeed-new.herokuapp.com/api";
-  console.log(url);
+  let url = process.env.url || "https://newsfeed-new.herokuapp.com";
+
   const getData = async () => {
-    const res = await axios.get(`${url}/news`);
-    console.log(url);
-    setData(res.data);
+    await axios({
+      method: "get",
+      url: `${url}/news`,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    }).then((d) => setData(d.data));
+
+    // setData(res.data);
   };
 
   const submit = async () => {
@@ -45,8 +51,8 @@ function Home() {
     });
     setDone(!done);
     console.log(res);
-    // setdata1((d) => ({ ...d, name: res.data.name, add: res.data.add }));
-    // setForm((d) => ({ ...d, name: "", num1: 0, num2: 0 }));
+    setdata1((d) => ({ ...d, name: res.data.name, add: res.data.add }));
+    setForm((d) => ({ ...d, name: "", num1: 0, num2: 0 }));
   };
   return (
     <VStack>
@@ -58,12 +64,14 @@ function Home() {
         </>
       )} */}
 
-      {/* <FormControl>
-        <FormLabel>Amount</FormLabel>
+      <FormControl>
+        <FormLabel>Import</FormLabel>
+        <label for="title">Title:</label>
         <Input
           value={form.title}
           onChange={(e) => setForm((d) => ({ ...d, title: e.target.value }))}
         />
+        <label for="text">Text:</label>
         <Input
           value={form.text}
           onChange={(e) => setForm((d) => ({ ...d, text: e.target.value }))}
@@ -71,11 +79,7 @@ function Home() {
 
         <Button onClick={() => submit()}>submit</Button>
       </FormControl>
-      {data1.name && data1.add != 0 && (
-        <Heading>
-          {data1.name}: {data1.add}
-        </Heading>
-      )} */}
+
       <HomeLayout />
       <NewsFeed />
       <Banner />
