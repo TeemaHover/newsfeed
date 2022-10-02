@@ -32,7 +32,7 @@ export default function Id() {
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
-      }).then((d) => setData(d.data));
+      }).then((d) => setAllData(d.data));
     };
     if (slug) {
       getData();
