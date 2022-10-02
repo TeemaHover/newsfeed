@@ -66,12 +66,12 @@ function Home() {
 
       <FormControl>
         <FormLabel>Import</FormLabel>
-        <label for="title">Title:</label>
+        <label name="title">Title:</label>
         <Input
           value={form.title}
           onChange={(e) => setForm((d) => ({ ...d, title: e.target.value }))}
         />
-        <label for="text">Text:</label>
+        <label name="text">Text:</label>
         <Input
           value={form.text}
           onChange={(e) => setForm((d) => ({ ...d, text: e.target.value }))}
