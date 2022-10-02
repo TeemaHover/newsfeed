@@ -24,21 +24,16 @@ export default function Id() {
         },
       }).then((d) => setData(d.data));
     };
+
     const getAllData = async () => {
-      await axios({
+      const res = await axios({
         method: "get",
-        url: `${url}/news`,
+        url: `${url}/news/`,
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
       }).then((d) => setData(d.data));
-
-      // setData(res.data);
     };
-    // const getAllData = async () => {
-    //   const res = await axios.get(`${url}/news/`);
-    //   setAllData(res.data);
-    // };
     if (slug) {
       getData();
       getAllData();
