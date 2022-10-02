@@ -37,6 +37,7 @@ export default function Id() {
     if (slug) {
       getData();
       getAllData();
+      console.log(getAllData());
     }
   }, [slug]);
   return (
