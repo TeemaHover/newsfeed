@@ -19,13 +19,23 @@ import axios from "axios";
 export default function NewsFeed() {
   const [data, setData] = useState([]);
   const [done, setDone] = useState(false);
-  const getData = async () => {
-    const res = await axios.get(`http://localhost:5500/news`);
-    setData(res.data);
-  };
+
+  let url = process.env.url || "https://newsfeed-new.herokuapp.com";
   useEffect(() => {
     getData();
   }, [done]);
+  const getData = async () => {
+    await axios({
+      method: "get",
+      url: `${url}/news`,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    }).then((d) => setData(d.data));
+
+    // setData(res.data);
+  };
+
   return (
     <HStack
       maxW={"1340px"}
